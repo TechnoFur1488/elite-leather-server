@@ -9,7 +9,8 @@ export const generateToken = (userId, role, res) => {
         maxAge: 24 * 60 * 60 * 1000,
         httpOnly: true,
         sameSite: "strict",
-        secure: true
+        secure: true,
+        domain: "https://elite-leather-client-git-main-nikitas-projects-e30fe775.vercel.app"
     })
 
     return token

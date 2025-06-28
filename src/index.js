@@ -25,14 +25,9 @@ app.use(cors({
         "https://elite-leather-client.vercel.app",
         "https://elite-leather-client-git-main-nikitas-projects-e30fe775.vercel.app", 
         "https://elite-leather-client-rg7t5tfke-nikitas-projects-e30fe775.vercel.app",
-        "http://localhost:3000",
-        "http://localhost:3001"
     ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
-    exposedHeaders: ["Content-Range", "X-Content-Range"],
-    maxAge: 86400
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }))
 
 app.use("/api", router)
