@@ -8,9 +8,9 @@ export const generateToken = (userId, role, res) => {
     res.cookie("jwt", token, {
         maxAge: 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
         secure: true,
-        domain: "https://elite-leather-client-git-main-nikitas-projects-e30fe775.vercel.app"
+        domain: "elite-leather-server-production.up.railway.app"
     })
 
     return token
