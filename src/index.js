@@ -23,7 +23,8 @@ app.use(fileUpload())
 app.use(cors({
     origin: ["https://elite-leather-client-git-main-nikitas-projects-e30fe775.vercel.app", "https://elite-leather-client.vercel.app", "https://elite-leather-client-rg7t5tfke-nikitas-projects-e30fe775.vercel.app"],
     credentials: true,
-    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"]
+    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
 }))
 
 app.use("/api", router)
