@@ -21,10 +21,18 @@ app.use(express.static(path.resolve(__dirname, "..", "static")))
 app.use(fileUpload())
 
 app.use(cors({
-    origin: ["https://elite-leather-client-git-main-nikitas-projects-e30fe775.vercel.app", "https://elite-leather-client.vercel.app", "https://elite-leather-client-rg7t5tfke-nikitas-projects-e30fe775.vercel.app"],
+    origin: [
+        "https://elite-leather-client.vercel.app",
+        "https://elite-leather-client-git-main-nikitas-projects-e30fe775.vercel.app", 
+        "https://elite-leather-client-rg7t5tfke-nikitas-projects-e30fe775.vercel.app",
+        "http://localhost:3000",
+        "http://localhost:3001"
+    ],
     credentials: true,
-    methods: ["POST", "GET", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
+    exposedHeaders: ["Content-Range", "X-Content-Range"],
+    maxAge: 86400
 }))
 
 app.use("/api", router)
