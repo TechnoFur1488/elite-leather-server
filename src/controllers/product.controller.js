@@ -11,7 +11,7 @@ const __dirname = dirname(__filename)
 class ProductController {
     async createProduct(req, res) {
         const { name, description, price, catalogId } = req.body
-        const { img } = req.files
+        let { img } = req.files
 
         if (req.user.role !== "ADMIN") {
             return res.status(403).json({ message: "Недостаточно прав" })
@@ -26,6 +26,9 @@ class ProductController {
         }
 
         try {
+            if (!Array.isArray(img)) {
+                img = [img]
+            }
             const fileNames = img.map(file => {
                 const fileName = uuidv4() + ".webp"
                 file.mv(path.resolve(__dirname, "..", "..", "static", fileName))
@@ -85,7 +88,7 @@ class ProductController {
     async updateProduct(req, res) {
         const { id } = req.params
         const { name, description, price, catalogId } = req.body
-        const { img } = req.files
+        let { img } = req.files
 
         if (req.user.role !== "ADMIN") {
             return res.status(403).json({ message: "Недостаточно прав" })
@@ -123,6 +126,9 @@ class ProductController {
                 )
             }
 
+            if (!Array.isArray(img)) {
+                img = [img]
+            }
             const fileNames = img.map(file => {
                 const fileName = uuidv4() + ".webp"
                 file.mv(path.resolve(__dirname, "..", "..", "static", fileName))
@@ -146,7 +152,6 @@ class ProductController {
             console.error(err)
             return res.status(500).json({ message: "Произошла ошибка" })
         }
-
     }
 
     async deleteProduct(req, res) {
